@@ -41,9 +41,11 @@
 
     form {
       display: flex;
-      width: 100%;
-      justify-content: center;
-      align-items: center;
+      width: 60%;
+      justify-content: space-between;
+      align-items:  center;
+      position: relative;
+      margin: auto;
     }
 
     form input,
@@ -54,9 +56,14 @@
       border: 1px solid hsl(223, 100%, 88%);
     }
 
+    form #ctn-fieldWraper{
+      width: 65%;
+      position: relative;
+    }
     form input {
-      width: 40%;
+      width: 100%;
       transition: 0.5s ease;
+
     }
 
     form input::placeholder {
@@ -65,12 +72,23 @@
       font-family: inherit;
     }
 
-    form input:invalid {
+    form input.invalid {
       border: 1px solid hsl(354, 100%, 66%);
     }
 
+    #ctn-fieldWraper::before{
+      position: absolute;
+      bottom: -1.5em;
+      left: 10px;
+      font-style: italic;
+      content: attr(data-error);
+      font-size: 0.6em;
+      color: hsl(354, 100%, 66%);
+      white-space: nowrap;
+    }
+
     form button {
-      width: 20%;
+      width: 30%;
       margin-left: 10px;
       cursor: pointer;
       border: none;
@@ -92,30 +110,34 @@
       color: black;
     }
 
-    footer{
+    footer {
       text-align: center;
       font-size: 0.8em;
       color: hsl(0, 0%, 59%);
     }
-    footer ul{
+
+    footer ul {
       list-style: none;
       margin: 0;
-      padding:0;
+      padding: 0;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    ul li{
+
+    ul li {
       margin: 0 4px;
       width: 40px;
       height: 40px;
     }
-    ul li i{
+
+    ul li i {
       color: hsl(223, 87%, 63%);
       font-weight: bold;
       font-size: 1.2em !important;
     }
-    li a{
+
+    li a {
       width: 100%;
       height: 100%;
       border: 1px solid hsl(223, 100%, 88%);
@@ -127,15 +149,19 @@
       text-decoration: none;
       transition: 0.5s ease;
     }
-    li a:hover{
+
+    li a:hover {
       background-color: hsl(223, 87%, 63%);
     }
-    li a:hover i{
+
+    li a:hover i {
       color: white;
     }
-    footer p{
+
+    footer p {
       font-weight: lighter;
     }
+
     .ctn-info {
       font-size: 0.9em;
       font-weight: lighter;
@@ -144,20 +170,23 @@
 
     @media only screen and (max-width:550px) {
       form {
+        width: 100%;
         flex-direction: column;
       }
 
-      form input,
+      form #ctn-fieldWraper,
       form button {
         width: 90%;
       }
 
+      form #ctn-fieldWraper{
+        margin-bottom: 10px;
+      }
       form button {
         margin-left: 0;
         margin-top: 20px;
       }
     }
-
   </style>
 </head>
 
@@ -166,8 +195,11 @@
     <img src="images/logo.svg" alt="logo" />
     <h1 class="desc">We are launching <b>soon!</b></h1>
     <h2 class="ctn-info">subscribe and get notified</h2>
-    <form action="#" method="post">
-      <input placeholder="Your email address" type="email" name="email" id="email" />
+    <form  action="#" method="post">
+      <div data-error=""  id="ctn-fieldWraper">
+        <input placeholder="Your email address" type="text" name="email"
+          id="email" />
+      </div>
       <button type="submit">Notify Me</button>
     </form>
     <img class="dashboard" src="images/illustration-dashboard.png" alt="">
@@ -180,6 +212,32 @@
     </ul>
     <p>© Copyright, All rights reserved</p>
   </footer>
+
+  <script>
+    
+    const form = document.querySelector("form");
+    const input = form.querySelector("input")
+    const fieldError=form.querySelector("#ctn-fieldWraper")
+   
+    input.addEventListener("focus",(e)=>{
+      fieldError.setAttribute("data-error"," ");
+      input.classList.remove("invalid");
+    })
+    
+    form.addEventListener("submit", (e) => {
+      if (input.value.length === 0) {
+        fieldError.setAttribute("data-error","Whoops! It looks like you forgot to add your email");
+        input.classList.toggle("invalid");
+        event.preventDefault()
+      }else{
+        if(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(input.value)===false){
+          fieldError.setAttribute("data-error","Please provide a valid email address");
+          input.classList.toggle("invalid");
+          event.preventDefault()
+        }
+      }
+    })
+  </script>
 </body>
 
 </html>
