@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Frontend Mentor | Ping coming soon page</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-size: 1.2em;
+      font-family: 'Libre Franklin', sans-serif;
+    }
+
+    main {
+      text-align: center;
+      margin: auto;
+      margin-top: 80px;
+      max-width: 800px;
+      min-height: 75vh;
+    }
+
+    h1,
+    h2 {
+      margin: 0;
+    }
+
+    .dashboard {
+      width: 100%;
+      margin-top: 50px;
+    }
+
+    form {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+
+    form input,
+    button {
+      padding: 15px;
+      outline: none;
+      border-radius: 30px;
+      border: 1px solid hsl(223, 100%, 88%);
+    }
+
+    form input {
+      width: 40%;
+      transition: 0.5s ease;
+    }
+
+    form input::placeholder {
+      color: hsl(223, 100%, 88%);
+      font-weight: lighter;
+      font-family: inherit;
+    }
+
+    form input:invalid {
+      border: 1px solid hsl(354, 100%, 66%);
+    }
+
+    form button {
+      width: 20%;
+      margin-left: 10px;
+      cursor: pointer;
+      border: none;
+      color: white;
+      background-color: hsl(223, 87%, 63%);
+      box-shadow: 2px 5px 10px hsl(223, 100%, 88%);
+      white-space: nowrap;
+      font-family: inherit;
+    }
+
+    .desc {
+      color: hsl(0, 0%, 59%);
+      font-size: 1.5em;
+      font-weight: lighter;
+      margin: 20px 0 5px;
+    }
+
+    .desc b {
+      color: black;
+    }
+
+    footer{
+      text-align: center;
+      font-size: 0.8em;
+      color: hsl(0, 0%, 59%);
+    }
+    footer ul{
+      list-style: none;
+      margin: 0;
+      padding:0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    ul li{
+      margin: 0 4px;
+      width: 40px;
+      height: 40px;
+    }
+    ul li i{
+      color: hsl(223, 87%, 63%);
+      font-weight: bold;
+      font-size: 1.2em !important;
+    }
+    li a{
+      width: 100%;
+      height: 100%;
+      border: 1px solid hsl(223, 100%, 88%);
+      overflow: hidden;
+      display: flex;
+      border-radius: 50%;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      transition: 0.5s ease;
+    }
+    li a:hover{
+      background-color: hsl(223, 87%, 63%);
+    }
+    li a:hover i{
+      color: white;
+    }
+    footer p{
+      font-weight: lighter;
+    }
+    .ctn-info {
+      font-size: 0.9em;
+      font-weight: lighter;
+      margin-bottom: 30px;
+    }
+
+    @media only screen and (max-width:550px) {
+      form {
+        flex-direction: column;
+      }
+
+      form input,
+      form button {
+        width: 90%;
+      }
+
+      form button {
+        margin-left: 0;
+        margin-top: 20px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <main>
+    <img src="images/logo.svg" alt="logo" />
+    <h1 class="desc">We are launching <b>soon!</b></h1>
+    <h2 class="ctn-info">subscribe and get notified</h2>
+    <form action="#" method="post">
+      <input placeholder="Your email address" type="email" name="email" id="email" />
+      <button type="submit">Notify Me</button>
+    </form>
+    <img class="dashboard" src="images/illustration-dashboard.png" alt="">
+  </main>
+  <footer>
+    <ul class="social">
+      <li><a href="http://facebook.com"><i class="fa fa-facebook"></i></a></li>
+      <li><a href="http://twitter.com"><i class="fa fa-twitter"></i></a></li>
+      <li><a href="http://instagram.com"><i class="fa fa-instagram"></i></a></li>
+    </ul>
+    <p>© Copyright, All rights reserved</p>
+  </footer>
+</body>
+
+</html>
